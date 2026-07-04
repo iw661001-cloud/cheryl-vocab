@@ -79,7 +79,9 @@ main {
 /* Flashcard */
 .progress {
   text-align: center;
-  color: var(--muted);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.15rem;
   margin-bottom: 10px;
 }
 
@@ -195,11 +197,14 @@ main {
 .quiz-progress {
   display: flex;
   justify-content: space-between;
-  color: var(--muted);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.1rem;
   margin-bottom: 10px;
 }
 
 .quiz-question {
+  position: relative;
   background: var(--card-bg);
   border-radius: 16px;
   padding: 24px;
@@ -207,6 +212,26 @@ main {
   text-align: center;
   font-size: 1.3rem;
   margin-bottom: 16px;
+}
+
+.hint-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff6da;
+  border: 2px solid #ffd43b;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.hint-text {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
 }
 
 .quiz-options {
@@ -246,7 +271,7 @@ main {
 }
 
 .quiz-result .score {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary-dark);
   margin: 10px 0;
@@ -256,4 +281,77 @@ main {
   color: var(--muted);
   font-size: 0.9rem;
   margin-bottom: 16px;
+}
+
+.feedback-banner {
+  text-align: center;
+  min-height: 40px;
+  margin-top: 14px;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.feedback-banner .celebrate {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--correct);
+  animation: popIn 0.4s ease-out;
+}
+
+.feedback-banner .gentle {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--muted);
+  animation: popIn 0.3s ease-out;
+}
+
+/* RWD：平板（例如 iPad）放大版面與字級，減少視覺負擔 */
+@media (min-width: 700px) {
+  header h1 { font-size: 1.7rem; }
+
+  .controls {
+    max-width: 720px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #chapterSelect { flex: 1; font-size: 1.15rem; padding: 12px; }
+  .mode-tabs { flex: 1; }
+  .mode-btn { font-size: 1.15rem; padding: 12px; }
+
+  main { max-width: 720px; }
+
+  .progress, .quiz-progress { font-size: 1.4rem; }
+
+  .card {
+    min-height: 420px;
+    padding: 40px;
+  }
+
+  .word-main { font-size: 3.2rem; }
+  .phonetic { font-size: 1.5rem; }
+  .level-badge { font-size: 1.05rem; padding: 4px 14px; }
+  .exam-years { font-size: 1rem; }
+  .speak-btn { width: 68px; height: 68px; font-size: 1.8rem; }
+  .hint { font-size: 1rem; }
+
+  .chinese, .pos { font-size: 1.2rem; }
+  .sentence, .translation { font-size: 1.05rem; }
+
+  .nav-btn { font-size: 1.15rem; padding: 18px; }
+
+  .quiz-question { font-size: 1.7rem; padding: 36px; }
+  .hint-btn { width: 48px; height: 48px; font-size: 1.4rem; }
+  .hint-text { font-size: 1.05rem; }
+  .option-btn { font-size: 1.25rem; padding: 20px; }
+
+  .quiz-result .score { font-size: 2.4rem; }
+  .mastery-summary { font-size: 1.05rem; }
+  .feedback-banner .celebrate { font-size: 1.6rem; }
+  .feedback-banner .gentle { font-size: 1.2rem; }
 }

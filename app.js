@@ -17,9 +17,12 @@ const SESSION_LENGTH = 15;
 const RETRY_GAP = 3; // 答錯後間隔幾題再重考
 const FAST_THRESHOLD_MS = 4000; // 判定「快速答對」的秒數門檻
 
+const CELEBRATE_PHRASES = ["太棒了！", "答對了！", "你好厲害！", "完全正確！", "繼續保持！"];
+
 let masteryData = {}; // { [word]: { state: 'unseen'|'weak'|'medium'|'familiar', fastStreak: number } }
 let sessionPos = 0;
-let quizScore = 0;
+let correctCount = 0;
+let wrongCount = 0;
 let quizAnswered = false;
 let quizFinished = false;
 let pendingRetries = []; // [{ word, dueAtIndex }]
@@ -246,7 +249,8 @@ function updateMastery(word, correct, elapsedMs) {
 
 function resetQuiz() {
   sessionPos = 0;
-  quizScore = 0;
+  correctCount = 0;
+  wrongCount = 0;
   quizAnswered = false;
   quizFinished = false;
   pendingRetries = [];
@@ -265,10 +269,21 @@ function buildQuestionForWord(w) {
   const options = shuffleArray([correctText, ...distractors]);
   return {
     word: w.word,
+    isEnToZh,
+    chineseMeaning,
     prompt: isEnToZh ? `「${w.word}」是什麼意思？` : `哪個單字的意思是「${chineseMeaning}」？`,
     options,
     answer: correctText,
   };
+}
+
+// 燈泡提示：不直接給答案，只給一點線索
+function getHintText(q) {
+  if (q.isEnToZh) {
+    return `提示：意思的第一個字是「${q.chineseMeaning.charAt(0)}」`;
+  }
+  const w = q.word.split("/")[0];
+  return `提示：單字開頭是「${w.charAt(0).toUpperCase()}」，共 ${w.length} 個字母`;
 }
 
 function pickNextWord() {
@@ -304,13 +319,21 @@ function renderQuiz() {
   appEl.innerHTML = `
     <div class="quiz-progress">
       <span>第 ${sessionPos + 1} / ${SESSION_LENGTH} 題</span>
-      <span>得分 ${quizScore}</span>
+      <span>對 ${correctCount}・錯 ${wrongCount}</span>
     </div>
-    <div class="quiz-question">${currentQuestion.prompt}</div>
+    <div class="quiz-question">
+      <button class="hint-btn" id="hintBtn" title="提示">💡</button>
+      ${currentQuestion.prompt}
+      <div class="hint-text" id="hintText"></div>
+    </div>
     <div class="quiz-options">
       ${currentQuestion.options.map((opt) => `<button class="option-btn">${opt}</button>`).join("")}
     </div>
+    <div class="feedback-banner" id="feedbackBanner"></div>
   `;
+  document.getElementById("hintBtn").addEventListener("click", () => {
+    document.getElementById("hintText").textContent = getHintText(currentQuestion);
+  });
   appEl.querySelectorAll(".option-btn").forEach((btn) => {
     btn.addEventListener("click", () => selectAnswer(btn));
   });
@@ -322,7 +345,8 @@ function selectAnswer(btn) {
   const elapsedMs = Date.now() - questionStartTime;
   const chosen = btn.textContent;
   const correct = chosen === currentQuestion.answer;
-  if (correct) quizScore++;
+  if (correct) correctCount++;
+  else wrongCount++;
 
   updateMastery(currentQuestion.word, correct, elapsedMs);
   if (!correct) {
@@ -336,12 +360,20 @@ function selectAnswer(btn) {
     else if (b === btn) b.classList.add("wrong");
   });
 
+  const banner = document.getElementById("feedbackBanner");
+  if (correct) {
+    const phrase = CELEBRATE_PHRASES[Math.floor(Math.random() * CELEBRATE_PHRASES.length)];
+    banner.innerHTML = `<div class="celebrate">🎉 ${phrase} 🎉</div>`;
+  } else {
+    banner.innerHTML = `<div class="gentle">答案是「${currentQuestion.answer}」，下次會記得的！</div>`;
+  }
+
   setTimeout(() => {
     sessionPos++;
     quizAnswered = false;
     if (sessionPos >= SESSION_LENGTH) quizFinished = true;
     renderQuiz();
-  }, 900);
+  }, 1200);
 }
 
 function renderQuizResult() {
@@ -351,7 +383,7 @@ function renderQuizResult() {
   appEl.innerHTML = `
     <div class="quiz-result">
       <div>練習完成！</div>
-      <div class="score">${quizScore} / ${SESSION_LENGTH}</div>
+      <div class="score">對 ${correctCount} 題・錯 ${wrongCount} 題</div>
       <div class="mastery-summary">
         熟悉 ${counts.familiar }・普通 ${counts.medium}・不熟 ${counts.weak}・未練習 ${counts.unseen}
       </div>
