@@ -1,0 +1,142 @@
+{
+  "id": "ch01",
+  "name": "Ch01 日常生活",
+  "words": [
+    {
+      "word": "aboard",
+      "phonetic": "əˈbɔrd",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "adv.", "chinese": "登上（交通工具）", "sentence": "Adam waved goodbye to his family and went aboard.", "translation": "亞當和家人揮手道別，上了船（飛機、車等）。" },
+        { "pos": "prep.", "chinese": "登上（交通工具）", "sentence": "When all the passengers are aboard the bus, it will leave.", "translation": "當所有乘客都上了巴士，它就會開走。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "以下單字字形相似，字義卻不同：",
+        "items": [
+          { "word": "aboard", "pos": "adv. prep.", "chinese": "登上（交通工具）" },
+          { "word": "abroad", "pos": "adv.", "chinese": "在國外；到國外", "sentence": "I plan to study abroad in Germany next year." },
+          { "word": "board", "pos": "v.", "chinese": "登上船（飛機、火車等）", "sentence": "We can board the train at 3 p.m." },
+          { "word": "broad", "pos": "adj.", "chinese": "寬的；闊的", "sentence": "The strong man has broad shoulders." }
+        ]
+      }
+    },
+    {
+      "word": "airline",
+      "phonetic": "ˈɛrˏlaɪn",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "航空公司", "sentence": "Signing up for our airline's membership program allows you to save up mileage and get discounts for your future trips.", "translation": "申請我們航空公司的會員可以讓你累積里程數，並在未來的旅程換取折扣。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "alcohol",
+      "phonetic": "ˈælkəˏhɔl",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "酒精", "sentence": "Alcohol can be used to kill bacteria.", "translation": "酒精可以用來殺菌。" },
+        { "pos": "n. [U]", "chinese": "含酒精之飲料", "sentence": "Beer and wine are different kinds of alcohol.", "translation": "啤酒和葡萄酒是不同的酒類。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "allowance",
+      "phonetic": "əˈlaʊəns",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "零用錢 (= pocket money)", "sentence": "I get a weekly allowance of NT$500 from my parents.", "translation": "我父母每星期給我五百元臺幣的零用錢。" },
+        { "pos": "n. [C]", "chinese": "津貼", "sentence": "Business people often get a travel allowance from their company to pay for their hotel and meals.", "translation": "業務員出差時，他們的公司通常會給他們食宿的差旅費。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "almond",
+      "phonetic": "ˈɑmənd",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "杏仁；扁桃樹", "sentence": "My sister loves to put nuts, like almonds, on top of her ice cream.", "translation": "我姐姐喜歡在冰淇淋上加杏仁之類的堅果。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "ambulance",
+      "phonetic": "ˈæmbjələns",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "救護車", "sentence": "The law requires all cars to give way to any ambulance with its sirens on.", "translation": "法律規定所有車輛都須讓路給任何執行勤務中的救護車。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "automobile/auto",
+      "phonetic": "ˈɔtəˏmobil / ˈɔto",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "車子 (= car)", "sentence": "Joe doesn't have enough money to buy an automobile, so he takes the bus to work.", "translation": "喬沒有足夠的錢買車子，所以只好搭公車上班。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "bacon",
+      "phonetic": "ˈbekən",
+      "level": "L5",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "培根", "sentence": "I like to eat bacon and eggs for breakfast.", "translation": "我早餐喜歡吃培根蛋。" }
+      ],
+      "phrases": [
+        { "phrase": "bring home the bacon", "chinese": "維持家計", "sentence": "When Tom hurt his back, Mary had to go to work to bring home the bacon.", "translation": "湯姆背部受傷時，瑪麗得去工作以維持家計。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "bargain",
+      "phonetic": "ˈbɑrgən",
+      "level": "L4",
+      "examYears": ["93", "107"],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "交易；協議 (= agreement)", "sentence": "Joan made a bargain with the carpenter—if he finished building the cabinets quickly, she'd give him more money.", "translation": "瓊安和木匠達成協議：如果他快點做完櫥櫃，她會多付他一些錢。" },
+        { "pos": "n. [C]", "chinese": "划算的交易；便宜貨 (= good deal)", "sentence": "Buying the house at such a low price was a real bargain.", "translation": "用這麼低的價錢買到那間房子真是划算。" },
+        { "pos": "vi.", "chinese": "講價；談條件 (= negotiate)", "sentence": "We bargained with the fruit seller until he lowered his prices.", "translation": "我們跟水果商討價還價直到他算我們便宜點。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "下列名詞皆有「協議；約定」之意，惟語意用法略有不同：",
+        "items": [
+          { "word": "bargain", "pos": "", "chinese": "常指買賣雙方的協議" },
+          { "word": "contract", "pos": "", "chinese": "指有法律效力的正式契約、合同", "sentence": "You need to sign this contract before the bank gives you the loan." },
+          { "word": "agreement", "pos": "", "chinese": "國家、公司等之間的書面或口頭協議、協定", "sentence": "The two companies reached an agreement on how to work together." },
+          { "word": "treaty", "pos": "", "chinese": "國與國最正式的條約", "sentence": "The presidents signed a peace treaty that ended the war." },
+          { "word": "convention", "pos": "", "chinese": "常指國際間的公約", "sentence": "Under the Geneva Convention, countries agree not to mistreat prisoners of war." }
+        ]
+      }
+    },
+    {
+      "word": "bitter",
+      "phonetic": "ˈbɪtɚ",
+      "level": "L3",
+      "examYears": ["94", "98"],
+      "entries": [
+        { "pos": "adj.", "chinese": "苦的", "sentence": "This coffee is terribly bitter and needs some sugar to make it easy to drink.", "translation": "這杯咖啡實在太苦了，需要加入一些糖來使得它容易入口。" },
+        { "pos": "adj.", "chinese": "天氣嚴寒的", "sentence": "I opened the door and was immediately struck by the bitter cold outside.", "translation": "我打開門，立刻被外面的酷寒嚇了一跳。" },
+        { "pos": "adj.", "chinese": "怨恨的；充滿仇恨的；無法釋懷的", "sentence": "The bitter old man spent all of his time thinking about all the things that made him mad.", "translation": "那位滿懷仇恨的老人花全部的時間想著所有讓他憤怒的事物。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    }
+  ]
+}
