@@ -60,6 +60,7 @@ function switchMode(newMode) {
   mode = newMode;
   modeFlashcardBtn.classList.toggle("active", mode === "flashcard");
   modeQuizBtn.classList.toggle("active", mode === "quiz");
+  document.body.classList.toggle("mode-quiz", mode === "quiz");
   if (mode === "flashcard") resetFlashcards();
   if (mode === "quiz") resetQuiz();
   render();
@@ -277,15 +278,6 @@ function buildQuestionForWord(w) {
   };
 }
 
-// 燈泡提示：不直接給答案，只給一點線索
-function getHintText(q) {
-  if (q.isEnToZh) {
-    return `提示：意思的第一個字是「${q.chineseMeaning.charAt(0)}」`;
-  }
-  const w = q.word.split("/")[0];
-  return `提示：單字開頭是「${w.charAt(0).toUpperCase()}」，共 ${w.length} 個字母`;
-}
-
 function pickNextWord() {
   const dueIdx = pendingRetries.findIndex((r) => r.dueAtIndex <= sessionPos);
   if (dueIdx !== -1) {
@@ -321,19 +313,12 @@ function renderQuiz() {
       <span>第 ${sessionPos + 1} / ${SESSION_LENGTH} 題</span>
       <span>對 ${correctCount}・錯 ${wrongCount}</span>
     </div>
-    <div class="quiz-question">
-      <button class="hint-btn" id="hintBtn" title="提示">💡</button>
-      ${currentQuestion.prompt}
-      <div class="hint-text" id="hintText"></div>
-    </div>
+    <div class="quiz-question">${currentQuestion.prompt}</div>
     <div class="quiz-options">
       ${currentQuestion.options.map((opt) => `<button class="option-btn">${opt}</button>`).join("")}
     </div>
     <div class="feedback-banner" id="feedbackBanner"></div>
   `;
-  document.getElementById("hintBtn").addEventListener("click", () => {
-    document.getElementById("hintText").textContent = getHintText(currentQuestion);
-  });
   appEl.querySelectorAll(".option-btn").forEach((btn) => {
     btn.addEventListener("click", () => selectAnswer(btn));
   });

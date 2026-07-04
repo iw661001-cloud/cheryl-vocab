@@ -9,6 +9,12 @@
   --muted: #6b7280;
 }
 
+/* 測驗模式改用不同主題色（藍＝單字卡／綠＝測驗），方便一眼分辨目前在哪個模式 */
+body.mode-quiz {
+  --primary: #0ca678;
+  --primary-dark: #087f5b;
+}
+
 * { box-sizing: border-box; }
 
 body {
@@ -16,6 +22,11 @@ body {
   font-family: -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
   background: var(--bg);
   color: var(--text);
+  transition: background-color 0.2s;
+}
+
+header {
+  transition: background-color 0.2s;
 }
 
 header {
@@ -214,26 +225,6 @@ main {
   margin-bottom: 16px;
 }
 
-.hint-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #fff6da;
-  border: 2px solid #ffd43b;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.hint-text {
-  margin-top: 14px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  font-style: italic;
-}
-
 .quiz-options {
   display: flex;
   flex-direction: column;
@@ -346,8 +337,6 @@ main {
   .nav-btn { font-size: 1.15rem; padding: 18px; }
 
   .quiz-question { font-size: 1.7rem; padding: 36px; }
-  .hint-btn { width: 48px; height: 48px; font-size: 1.4rem; }
-  .hint-text { font-size: 1.05rem; }
   .option-btn { font-size: 1.25rem; padding: 20px; }
 
   .quiz-result .score { font-size: 2.4rem; }
