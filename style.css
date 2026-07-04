@@ -251,3 +251,9 @@ main {
   color: var(--primary-dark);
   margin: 10px 0;
 }
+
+.mastery-summary {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}

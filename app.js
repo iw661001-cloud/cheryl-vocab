@@ -4,6 +4,7 @@ const modeFlashcardBtn = document.getElementById("modeFlashcard");
 const modeQuizBtn = document.getElementById("modeQuiz");
 
 let currentWords = [];
+let currentChapterId = null;
 let mode = "flashcard";
 
 // ---- flashcard state ----
@@ -11,11 +12,20 @@ let cardOrder = [];
 let cardIndex = 0;
 let flipped = false;
 
-// ---- quiz state ----
-let quizQuestions = [];
-let quizIndex = 0;
+// ---- quiz state (adaptive, based on objective mastery tracking) ----
+const SESSION_LENGTH = 15;
+const RETRY_GAP = 3; // 答錯後間隔幾題再重考
+const FAST_THRESHOLD_MS = 4000; // 判定「快速答對」的秒數門檻
+
+let masteryData = {}; // { [word]: { state: 'unseen'|'weak'|'medium'|'familiar', fastStreak: number } }
+let sessionPos = 0;
 let quizScore = 0;
 let quizAnswered = false;
+let quizFinished = false;
+let pendingRetries = []; // [{ word, dueAtIndex }]
+let lastWordShown = null;
+let currentQuestion = null;
+let questionStartTime = 0;
 
 function init() {
   CHAPTERS.forEach((ch) => {
@@ -35,6 +45,8 @@ function loadChapter(file) {
     .then((res) => res.json())
     .then((data) => {
       currentWords = data.words;
+      currentChapterId = data.id;
+      loadMastery();
       resetFlashcards();
       resetQuiz();
       render();
@@ -169,38 +181,10 @@ function renderCardBack(word) {
   return `<div class="card-back">${entries}${phrases}${plusBox}</div>`;
 }
 
-// ================= Quiz =================
-
-function resetQuiz() {
-  quizQuestions = generateQuizQuestions(currentWords);
-  quizIndex = 0;
-  quizScore = 0;
-  quizAnswered = false;
-}
+// ================= Quiz（依客觀答題狀況自動安排練習頻率） =================
 
 function cleanChinese(text) {
   return text.replace(/\s*\(=.*?\)/g, "").trim();
-}
-
-function generateQuizQuestions(words) {
-  if (words.length < 4) return [];
-  const questions = words.map((w) => {
-    const isEnToZh = Math.random() < 0.5;
-    const chineseMeaning = cleanChinese(w.entries[0].chinese);
-    const correctText = isEnToZh ? chineseMeaning : w.word;
-    const pool = words.filter((x) => x.word !== w.word);
-    const distractors = shuffleArray(pool)
-      .slice(0, 3)
-      .map((x) => (isEnToZh ? cleanChinese(x.entries[0].chinese) : x.word));
-    const options = shuffleArray([correctText, ...distractors]);
-    return {
-      prompt: isEnToZh ? `「${w.word}」是什麼意思？` : `哪個單字的意思是「${chineseMeaning}」？`,
-      options,
-      answer: correctText,
-      speakWord: isEnToZh ? w.word : null,
-    };
-  });
-  return shuffleArray(questions);
 }
 
 function shuffleArray(arr) {
@@ -212,57 +196,166 @@ function shuffleArray(arr) {
   return a;
 }
 
+// ---- 熟悉度資料（存在瀏覽器 localStorage，依章節分開存） ----
+
+function masteryStorageKey() {
+  return `cheryl-vocab-mastery-${currentChapterId}`;
+}
+
+function loadMastery() {
+  const raw = localStorage.getItem(masteryStorageKey());
+  masteryData = raw ? JSON.parse(raw) : {};
+}
+
+function saveMastery() {
+  localStorage.setItem(masteryStorageKey(), JSON.stringify(masteryData));
+}
+
+function getWordState(word) {
+  return (masteryData[word] && masteryData[word].state) || "unseen";
+}
+
+function weightForState(state) {
+  switch (state) {
+    case "weak": return 4;
+    case "unseen": return 3;
+    case "medium": return 2;
+    case "familiar": return 1;
+    default: return 2;
+  }
+}
+
+// 依「對錯」＋「作答時間」客觀判定，不使用使用者自評
+function updateMastery(word, correct, elapsedMs) {
+  const entry = masteryData[word] || { state: "unseen", fastStreak: 0 };
+  if (!correct) {
+    entry.state = "weak";
+    entry.fastStreak = 0;
+  } else if (elapsedMs > FAST_THRESHOLD_MS) {
+    entry.state = "medium";
+    entry.fastStreak = 0;
+  } else {
+    entry.fastStreak += 1;
+    entry.state = entry.fastStreak >= 2 ? "familiar" : "medium";
+  }
+  masteryData[word] = entry;
+  saveMastery();
+}
+
+// ---- 練習場次（固定15題，答錯的字會插隊在幾題後再考一次） ----
+
+function resetQuiz() {
+  sessionPos = 0;
+  quizScore = 0;
+  quizAnswered = false;
+  quizFinished = false;
+  pendingRetries = [];
+  lastWordShown = null;
+  currentQuestion = null;
+}
+
+function buildQuestionForWord(w) {
+  const isEnToZh = Math.random() < 0.5;
+  const chineseMeaning = cleanChinese(w.entries[0].chinese);
+  const correctText = isEnToZh ? chineseMeaning : w.word;
+  const pool = currentWords.filter((x) => x.word !== w.word);
+  const distractors = shuffleArray(pool)
+    .slice(0, 3)
+    .map((x) => (isEnToZh ? cleanChinese(x.entries[0].chinese) : x.word));
+  const options = shuffleArray([correctText, ...distractors]);
+  return {
+    word: w.word,
+    prompt: isEnToZh ? `「${w.word}」是什麼意思？` : `哪個單字的意思是「${chineseMeaning}」？`,
+    options,
+    answer: correctText,
+  };
+}
+
+function pickNextWord() {
+  const dueIdx = pendingRetries.findIndex((r) => r.dueAtIndex <= sessionPos);
+  if (dueIdx !== -1) {
+    return pendingRetries.splice(dueIdx, 1)[0].word;
+  }
+  let pool = currentWords.filter((w) => w.word !== lastWordShown);
+  if (pool.length === 0) pool = currentWords;
+  const weighted = [];
+  pool.forEach((w) => {
+    const weight = weightForState(getWordState(w.word));
+    for (let i = 0; i < weight; i++) weighted.push(w);
+  });
+  return weighted[Math.floor(Math.random() * weighted.length)].word;
+}
+
 function renderQuiz() {
-  if (quizQuestions.length === 0) {
+  if (currentWords.length < 4) {
     appEl.innerHTML = "<p>這個章節單字太少，無法出測驗（至少需要4個單字）</p>";
     return;
   }
-  if (quizIndex >= quizQuestions.length) {
+  if (quizFinished) {
     renderQuizResult();
     return;
   }
-  const q = quizQuestions[quizIndex];
+  const wordKey = pickNextWord();
+  const wordObj = currentWords.find((w) => w.word === wordKey);
+  currentQuestion = buildQuestionForWord(wordObj);
+  lastWordShown = wordKey;
+  questionStartTime = Date.now();
+
   appEl.innerHTML = `
     <div class="quiz-progress">
-      <span>第 ${quizIndex + 1} / ${quizQuestions.length} 題</span>
+      <span>第 ${sessionPos + 1} / ${SESSION_LENGTH} 題</span>
       <span>得分 ${quizScore}</span>
     </div>
-    <div class="quiz-question">${q.prompt}</div>
+    <div class="quiz-question">${currentQuestion.prompt}</div>
     <div class="quiz-options">
-      ${q.options.map((opt, i) => `<button class="option-btn" data-i="${i}">${opt}</button>`).join("")}
+      ${currentQuestion.options.map((opt) => `<button class="option-btn">${opt}</button>`).join("")}
     </div>
   `;
   appEl.querySelectorAll(".option-btn").forEach((btn) => {
-    btn.addEventListener("click", () => selectAnswer(btn, q));
+    btn.addEventListener("click", () => selectAnswer(btn));
   });
 }
 
-function selectAnswer(btn, q) {
+function selectAnswer(btn) {
   if (quizAnswered) return;
   quizAnswered = true;
+  const elapsedMs = Date.now() - questionStartTime;
   const chosen = btn.textContent;
-  const correct = chosen === q.answer;
+  const correct = chosen === currentQuestion.answer;
   if (correct) quizScore++;
+
+  updateMastery(currentQuestion.word, correct, elapsedMs);
+  if (!correct) {
+    const dueAtIndex = Math.min(sessionPos + RETRY_GAP, SESSION_LENGTH - 1);
+    pendingRetries.push({ word: currentQuestion.word, dueAtIndex });
+  }
 
   appEl.querySelectorAll(".option-btn").forEach((b) => {
     b.disabled = true;
-    if (b.textContent === q.answer) b.classList.add("correct");
+    if (b.textContent === currentQuestion.answer) b.classList.add("correct");
     else if (b === btn) b.classList.add("wrong");
   });
 
   setTimeout(() => {
-    quizIndex++;
+    sessionPos++;
     quizAnswered = false;
+    if (sessionPos >= SESSION_LENGTH) quizFinished = true;
     renderQuiz();
   }, 900);
 }
 
 function renderQuizResult() {
+  const counts = { weak: 0, medium: 0, familiar: 0, unseen: 0 };
+  currentWords.forEach((w) => counts[getWordState(w.word)]++);
+
   appEl.innerHTML = `
     <div class="quiz-result">
-      <div>測驗完成！</div>
-      <div class="score">${quizScore} / ${quizQuestions.length}</div>
-      <button class="nav-btn" id="retryBtn">再測一次</button>
+      <div>練習完成！</div>
+      <div class="score">${quizScore} / ${SESSION_LENGTH}</div>
+      <div class="mastery-summary">
+        熟悉 ${counts.familiar }・普通 ${counts.medium}・不熟 ${counts.weak}・未練習 ${counts.unseen}
+      </div>
+      <button class="nav-btn" id="retryBtn">再練習一次</button>
     </div>
   `;
   document.getElementById("retryBtn").addEventListener("click", () => {
