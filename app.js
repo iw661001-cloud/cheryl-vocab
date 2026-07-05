@@ -2,6 +2,7 @@ const appEl = document.getElementById("app");
 const chapterSelect = document.getElementById("chapterSelect");
 const modeFlashcardBtn = document.getElementById("modeFlashcard");
 const modeQuizBtn = document.getElementById("modeQuiz");
+const modeWrongReviewBtn = document.getElementById("modeWrongReview");
 
 let currentWords = [];
 let currentChapterId = null;
@@ -30,6 +31,12 @@ let lastWordShown = null;
 let currentQuestion = null;
 let questionStartTime = 0;
 
+// ---- 常錯單字複習（跨批次累積，不隨批次或單場練習清空） ----
+const WRONG_HISTORY_KEY = "cheryl-vocab-wrong-history";
+let wrongReviewWords = [];
+let wrongReviewIndex = 0;
+let wrongReviewFlipped = false;
+
 function init() {
   CHAPTERS.forEach((ch) => {
     const opt = document.createElement("option");
@@ -40,6 +47,7 @@ function init() {
   chapterSelect.addEventListener("change", () => loadChapter(chapterSelect.value));
   modeFlashcardBtn.addEventListener("click", () => switchMode("flashcard"));
   modeQuizBtn.addEventListener("click", () => switchMode("quiz"));
+  modeWrongReviewBtn.addEventListener("click", () => switchMode("wrongreview"));
   loadChapter(CHAPTERS[0].file);
 }
 
@@ -60,6 +68,7 @@ function switchMode(newMode) {
   mode = newMode;
   modeFlashcardBtn.classList.toggle("active", mode === "flashcard");
   modeQuizBtn.classList.toggle("active", mode === "quiz");
+  modeWrongReviewBtn.classList.toggle("active", mode === "wrongreview");
   document.body.classList.toggle("mode-quiz", mode === "quiz");
   if (mode === "flashcard") resetFlashcards();
   if (mode === "quiz") resetQuiz();
@@ -68,7 +77,8 @@ function switchMode(newMode) {
 
 function render() {
   if (mode === "flashcard") renderFlashcard();
-  else renderQuiz();
+  else if (mode === "quiz") renderQuiz();
+  else enterWrongReview();
 }
 
 // ================= Flashcard =================
@@ -337,6 +347,7 @@ function selectAnswer(btn) {
   if (!correct) {
     const dueAtIndex = Math.min(sessionPos + RETRY_GAP, SESSION_LENGTH - 1);
     pendingRetries.push({ word: currentQuestion.word, dueAtIndex });
+    recordWrongHistory(currentChapterId, currentQuestion.word);
   }
 
   appEl.querySelectorAll(".option-btn").forEach((b) => {
@@ -378,6 +389,107 @@ function renderQuizResult() {
   document.getElementById("retryBtn").addEventListener("click", () => {
     resetQuiz();
     renderQuiz();
+  });
+}
+
+// ================= 常錯單字複習（全域累積，跨批次） =================
+
+function loadWrongHistory() {
+  const raw = localStorage.getItem(WRONG_HISTORY_KEY);
+  return raw ? JSON.parse(raw) : {};
+}
+
+function saveWrongHistory(history) {
+  localStorage.setItem(WRONG_HISTORY_KEY, JSON.stringify(history));
+}
+
+// chapterId 加進 key，避免不同批次剛好出現同名單字互相蓋掉
+function recordWrongHistory(chapterId, word) {
+  const history = loadWrongHistory();
+  const key = `${chapterId}::${word}`;
+  const entry = history[key] || { chapterId, word, wrongCount: 0, lastWrongAt: 0 };
+  entry.wrongCount += 1;
+  entry.lastWrongAt = Date.now();
+  history[key] = entry;
+  saveWrongHistory(history);
+}
+
+// 常錯清單橫跨所有批次，所以要把 chapters.js 列出的每個批次 json 都抓一次
+function loadAllWordsMap() {
+  return Promise.all(
+    CHAPTERS.map((ch) => fetch(ch.file).then((res) => res.json()))
+  ).then((allData) => {
+    const map = {};
+    allData.forEach((data) => {
+      data.words.forEach((w) => {
+        map[`${data.id}::${w.word}`] = { ...w, chapterId: data.id, chapterName: data.name };
+      });
+    });
+    return map;
+  });
+}
+
+function enterWrongReview() {
+  const history = loadWrongHistory();
+  const entries = Object.values(history).filter((v) => v.wrongCount > 0);
+  if (entries.length === 0) {
+    wrongReviewWords = [];
+    renderWrongReview();
+    return;
+  }
+  loadAllWordsMap().then((wordsMap) => {
+    wrongReviewWords = entries
+      .map((v) => {
+        const w = wordsMap[`${v.chapterId}::${v.word}`];
+        return w ? { ...w, wrongCount: v.wrongCount, lastWrongAt: v.lastWrongAt } : null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.wrongCount - a.wrongCount);
+    wrongReviewIndex = 0;
+    wrongReviewFlipped = false;
+    renderWrongReview();
+  });
+}
+
+function renderWrongReview() {
+  if (wrongReviewWords.length === 0) {
+    appEl.innerHTML = `<p class="empty-msg">目前還沒有累積到常錯的單字。多做幾次測驗之後，答錯過的字會自動出現在這裡，方便考前重點複習。</p>`;
+    return;
+  }
+  const word = wrongReviewWords[wrongReviewIndex];
+
+  appEl.innerHTML = `
+    <div class="progress">${wrongReviewIndex + 1} / ${wrongReviewWords.length}（累積答錯 ${word.wrongCount} 次・${word.chapterName}）</div>
+    <div class="card" id="flashcard">
+      ${wrongReviewFlipped ? renderCardBack(word) : renderCardFront(word)}
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn secondary" id="prevBtn">上一個</button>
+      <button class="nav-btn" id="nextBtn">下一個</button>
+    </div>
+  `;
+
+  document.getElementById("flashcard").addEventListener("click", (e) => {
+    if (e.target.closest(".speak-btn")) return;
+    wrongReviewFlipped = !wrongReviewFlipped;
+    renderWrongReview();
+  });
+  const speakBtn = appEl.querySelector(".speak-btn");
+  if (speakBtn) {
+    speakBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speak(word.word.split("/")[0]);
+    });
+  }
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    wrongReviewIndex = (wrongReviewIndex - 1 + wrongReviewWords.length) % wrongReviewWords.length;
+    wrongReviewFlipped = false;
+    renderWrongReview();
+  });
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    wrongReviewIndex = (wrongReviewIndex + 1) % wrongReviewWords.length;
+    wrongReviewFlipped = false;
+    renderWrongReview();
   });
 }
 

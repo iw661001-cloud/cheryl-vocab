@@ -274,6 +274,15 @@ main {
   margin-bottom: 16px;
 }
 
+.empty-msg {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px 24px;
+  text-align: center;
+  color: var(--muted);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
 .feedback-banner {
   text-align: center;
   min-height: 40px;
