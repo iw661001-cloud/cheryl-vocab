@@ -55,13 +55,19 @@ header h1 {
 }
 
 .link-btn {
-  background: none;
-  border: 1px solid rgba(255,255,255,0.6);
-  color: #fff;
+  background: #fff;
+  border: none;
+  color: var(--primary-dark);
   border-radius: 8px;
-  padding: 3px 10px;
-  font-size: 0.85rem;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
+}
+
+a.link-btn,
+a.link-btn:visited {
+  color: var(--primary-dark);
 }
 
 .name-modal {
@@ -350,21 +356,22 @@ main {
 }
 
 .student-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-dark);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .student-stats {
   color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 
 .student-card .mastery-summary {
-  margin-top: 8px;
+  margin-top: 10px;
   margin-bottom: 0;
+  font-size: 1.05rem;
 }
 
 .feedback-banner {
