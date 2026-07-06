@@ -15,6 +15,12 @@ body.mode-quiz {
   --primary-dark: #087f5b;
 }
 
+/* 儀表板（家長監看頁）改用第三種主題色（紫），避免跟練習頁的藍/綠搞混 */
+body.dashboard-theme {
+  --primary: #7048e8;
+  --primary-dark: #5f3dc4;
+}
+
 * { box-sizing: border-box; }
 
 body {
