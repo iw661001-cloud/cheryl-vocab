@@ -4,8 +4,13 @@ const modeFlashcardBtn = document.getElementById("modeFlashcard");
 const modeQuizBtn = document.getElementById("modeQuiz");
 const modeWrongReviewBtn = document.getElementById("modeWrongReview");
 
+const BATCH_SIZE = 10; // 每天教學/測驗的字數，跟家長對孩子的承諾一致
+
+let allWords = []; // 所有單元的單字串成一條連續清單，每個字都標記來源單元 _unitId/_unitName
+let BATCHES = []; // 依 BATCH_SIZE 切出來的每日批次，可能跨單元填滿
+
 let currentWords = [];
-let currentChapterId = null;
+let currentChapterId = null; // 目前選到的批次 id（如 "day-01"）
 let mode = "flashcard";
 
 // ---- flashcard state ----
@@ -38,30 +43,53 @@ let wrongReviewIndex = 0;
 let wrongReviewFlipped = false;
 
 function init() {
-  CHAPTERS.forEach((ch) => {
-    const opt = document.createElement("option");
-    opt.value = ch.file;
-    opt.textContent = ch.name;
-    chapterSelect.appendChild(opt);
-  });
-  chapterSelect.addEventListener("change", () => loadChapter(chapterSelect.value));
-  modeFlashcardBtn.addEventListener("click", () => switchMode("flashcard"));
-  modeQuizBtn.addEventListener("click", () => switchMode("quiz"));
-  modeWrongReviewBtn.addEventListener("click", () => switchMode("wrongreview"));
-  loadChapter(CHAPTERS[0].file);
+  Promise.all(UNITS.map((u) => fetch(u.file).then((res) => res.json())))
+    .then((allUnitData) => {
+      allWords = [];
+      allUnitData.forEach((data, i) => {
+        data.words.forEach((w) => {
+          allWords.push({ ...w, _unitId: UNITS[i].id, _unitName: UNITS[i].name });
+        });
+      });
+      BATCHES = buildBatches(allWords);
+
+      BATCHES.forEach((batch) => {
+        const opt = document.createElement("option");
+        opt.value = batch.id;
+        opt.textContent = batch.label;
+        chapterSelect.appendChild(opt);
+      });
+
+      chapterSelect.addEventListener("change", () => selectBatch(chapterSelect.value));
+      modeFlashcardBtn.addEventListener("click", () => switchMode("flashcard"));
+      modeQuizBtn.addEventListener("click", () => switchMode("quiz"));
+      modeWrongReviewBtn.addEventListener("click", () => switchMode("wrongreview"));
+
+      selectBatch(BATCHES[0].id);
+    });
 }
 
-function loadChapter(file) {
-  fetch(file)
-    .then((res) => res.json())
-    .then((data) => {
-      currentWords = data.words;
-      currentChapterId = data.id;
-      loadMastery();
-      resetFlashcards();
-      resetQuiz();
-      render();
-    });
+// 把所有單元的單字串成一條連續清單後，每 BATCH_SIZE 個字切一批（跨單元填滿），
+// 這樣才能保證「每天10個字」跟教學承諾一致，不受單元邊界影響。
+function buildBatches(words) {
+  const batches = [];
+  for (let i = 0; i < words.length; i += BATCH_SIZE) {
+    const slice = words.slice(i, i + BATCH_SIZE);
+    const dayNum = batches.length + 1;
+    const label = `第${dayNum}天 (${slice[0].word}~${slice[slice.length - 1].word})`;
+    batches.push({ id: `day-${String(dayNum).padStart(2, "0")}`, label, words: slice });
+  }
+  return batches;
+}
+
+function selectBatch(batchId) {
+  const batch = BATCHES.find((b) => b.id === batchId);
+  currentWords = batch.words;
+  currentChapterId = batch.id;
+  loadMastery();
+  resetFlashcards();
+  resetQuiz();
+  render();
 }
 
 function switchMode(newMode) {
@@ -210,7 +238,7 @@ function shuffleArray(arr) {
   return a;
 }
 
-// ---- 熟悉度資料（存在瀏覽器 localStorage，依章節分開存） ----
+// ---- 熟悉度資料（存在瀏覽器 localStorage，依「每日批次」分開存） ----
 
 function masteryStorageKey() {
   return `cheryl-vocab-mastery-${currentChapterId}`;
@@ -280,6 +308,7 @@ function buildQuestionForWord(w) {
   const options = shuffleArray([correctText, ...distractors]);
   return {
     word: w.word,
+    unitId: w._unitId,
     isEnToZh,
     chineseMeaning,
     prompt: isEnToZh ? `「${w.word}」是什麼意思？` : `哪個單字的意思是「${chineseMeaning}」？`,
@@ -305,7 +334,7 @@ function pickNextWord() {
 
 function renderQuiz() {
   if (currentWords.length < 4) {
-    appEl.innerHTML = "<p>這個章節單字太少，無法出測驗（至少需要4個單字）</p>";
+    appEl.innerHTML = "<p>這個批次單字太少，無法出測驗（至少需要4個單字）</p>";
     return;
   }
   if (quizFinished) {
@@ -347,7 +376,7 @@ function selectAnswer(btn) {
   if (!correct) {
     const dueAtIndex = Math.min(sessionPos + RETRY_GAP, SESSION_LENGTH - 1);
     pendingRetries.push({ word: currentQuestion.word, dueAtIndex });
-    recordWrongHistory(currentChapterId, currentQuestion.word);
+    recordWrongHistory(currentQuestion.unitId, currentQuestion.word);
   }
 
   appEl.querySelectorAll(".option-btn").forEach((b) => {
@@ -392,7 +421,7 @@ function renderQuizResult() {
   });
 }
 
-// ================= 常錯單字複習（全域累積，跨批次） =================
+// ================= 常錯單字複習（全域累積，跨批次，錨定在單字所屬的單元） =================
 
 function loadWrongHistory() {
   const raw = localStorage.getItem(WRONG_HISTORY_KEY);
@@ -403,30 +432,16 @@ function saveWrongHistory(history) {
   localStorage.setItem(WRONG_HISTORY_KEY, JSON.stringify(history));
 }
 
-// chapterId 加進 key，避免不同批次剛好出現同名單字互相蓋掉
-function recordWrongHistory(chapterId, word) {
+// key 用「單元id::單字」而不是「每日批次id::單字」，因為單字真正歸屬的是單元，
+// 每日批次只是暫時的教學分組，同一個字重新切批次後仍要能對應到同一筆歷史記錄
+function recordWrongHistory(unitId, word) {
   const history = loadWrongHistory();
-  const key = `${chapterId}::${word}`;
-  const entry = history[key] || { chapterId, word, wrongCount: 0, lastWrongAt: 0 };
+  const key = `${unitId}::${word}`;
+  const entry = history[key] || { unitId, word, wrongCount: 0, lastWrongAt: 0 };
   entry.wrongCount += 1;
   entry.lastWrongAt = Date.now();
   history[key] = entry;
   saveWrongHistory(history);
-}
-
-// 常錯清單橫跨所有批次，所以要把 chapters.js 列出的每個批次 json 都抓一次
-function loadAllWordsMap() {
-  return Promise.all(
-    CHAPTERS.map((ch) => fetch(ch.file).then((res) => res.json()))
-  ).then((allData) => {
-    const map = {};
-    allData.forEach((data) => {
-      data.words.forEach((w) => {
-        map[`${data.id}::${w.word}`] = { ...w, chapterId: data.id, chapterName: data.name };
-      });
-    });
-    return map;
-  });
 }
 
 function enterWrongReview() {
@@ -437,18 +452,20 @@ function enterWrongReview() {
     renderWrongReview();
     return;
   }
-  loadAllWordsMap().then((wordsMap) => {
-    wrongReviewWords = entries
-      .map((v) => {
-        const w = wordsMap[`${v.chapterId}::${v.word}`];
-        return w ? { ...w, wrongCount: v.wrongCount, lastWrongAt: v.lastWrongAt } : null;
-      })
-      .filter(Boolean)
-      .sort((a, b) => b.wrongCount - a.wrongCount);
-    wrongReviewIndex = 0;
-    wrongReviewFlipped = false;
-    renderWrongReview();
+  const wordsMap = {};
+  allWords.forEach((w) => {
+    wordsMap[`${w._unitId}::${w.word}`] = w;
   });
+  wrongReviewWords = entries
+    .map((v) => {
+      const w = wordsMap[`${v.unitId}::${v.word}`];
+      return w ? { ...w, wrongCount: v.wrongCount, lastWrongAt: v.lastWrongAt } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.wrongCount - a.wrongCount);
+  wrongReviewIndex = 0;
+  wrongReviewFlipped = false;
+  renderWrongReview();
 }
 
 function renderWrongReview() {
@@ -459,7 +476,7 @@ function renderWrongReview() {
   const word = wrongReviewWords[wrongReviewIndex];
 
   appEl.innerHTML = `
-    <div class="progress">${wrongReviewIndex + 1} / ${wrongReviewWords.length}（累積答錯 ${word.wrongCount} 次・${word.chapterName}）</div>
+    <div class="progress">${wrongReviewIndex + 1} / ${wrongReviewWords.length}（累積答錯 ${word.wrongCount} 次・${word._unitName}）</div>
     <div class="card" id="flashcard">
       ${wrongReviewFlipped ? renderCardBack(word) : renderCardFront(word)}
     </div>

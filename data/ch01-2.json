@@ -1,0 +1,541 @@
+{
+  "id": "ch01-2",
+  "name": "Ch01 日常生活 單元1-2",
+  "words": [
+    {
+      "word": "doughnut/donut",
+      "phonetic": "ˈdonət",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "甜甜圈", "sentence": "At the café, I got a cup of coffee, and a doughnut with chocolate frosting and sprinkles on it.", "translation": "在這家咖啡店，我拿了一杯咖啡和有灑巧克力糖霜和碎片的甜甜圈。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "dumpling",
+      "phonetic": "ˈdʌmplɪŋ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "餃子", "sentence": "We decided to get some fried dumplings for dinner. Mine were stuffed with cabbage, while my sister's were stuffed with pork.", "translation": "我們決定晚餐吃煎餃。我的是包高麗菜的，而我姐姐的是包豬肉的。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "dye",
+      "phonetic": "daɪ",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "vt.", "chinese": "使染色 (= color)（dye-dyed-dyed-dyeing）", "sentence": "The sunset dyed the sky red.", "translation": "夕陽染紅了天空。" },
+        { "pos": "n. [C] [U]", "chinese": "染料", "sentence": "Rose used some blue dye to change the color of her T-shirts.", "translation": "蘿絲用了一些藍色染料把自己的T恤染成藍色。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "elevator",
+      "phonetic": "ˈɛləˏvetə",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "電梯", "sentence": "We got into the elevator and pressed the button to go to the 23rd floor, hoping the ride up wouldn't take long.", "translation": "我們進到電梯內並按按鈕到23樓，希望上去的時間不會太久。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "essential",
+      "phonetic": "ɪˈsɛnʃəl",
+      "level": "L4",
+      "examYears": ["96", "99", "103", "104", "108", "109"],
+      "entries": [
+        { "pos": "adj.", "chinese": "必要的 (= necessary; ↔ unimportant, unnecessary)", "sentence": "A passport is essential when we travel abroad.", "translation": "我們出國旅遊時，護照是不可或缺的。" },
+        { "pos": "n. [C]", "chinese": "必需品 (= necessity)", "sentence": "Food, shelter, and clothing are essentials for living.", "translation": "食物、居所和衣物是生活的基本需要。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "1. essential 的常見搭配用法如下：it is essential + to V …至關重要；it is essential (that) + S (+ should) + 原V …至關重要。2. essential 的常見衍生字：essence n. 本質；精油，in essence 本質上；實質上 (= essentially)。",
+        "items": [
+          { "word": "it is essential + to V", "pos": "", "chinese": "…至關重要", "sentence": "If you want to go to a good college, it's essential to study hard every day." },
+          { "word": "it is essential (that) + S (+ should) + 原V", "pos": "", "chinese": "…至關重要", "sentence": "It is essential that everyone wear safety equipment during this dangerous activity." },
+          { "word": "essence", "pos": "n.", "chinese": "本質；精油" },
+          { "word": "in essence", "pos": "", "chinese": "本質上；實質上 (= essentially)", "sentence": "Though the professor's speech covered many topics, it was in essence/essentially about global warming." }
+        ]
+      }
+    },
+    {
+      "word": "fare",
+      "phonetic": "fɛr",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "車費", "sentence": "What is the bus fare from Taichung to Kaohsiung?", "translation": "從臺中到高雄的客運票價是多少？" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "fence",
+      "phonetic": "fɛns",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "柵欄；籬笆", "sentence": "The rancher put a high fence around his land so no wild animals could come in and attack his cows.", "translation": "這位牧場主在他的土地上放上高柵欄，這樣就沒有野生動物可以進入攻擊他的乳牛群。" }
+      ],
+      "phrases": [
+        { "phrase": "sit on the fence", "chinese": "保持中立；猶豫不定", "sentence": "I've gotten acceptance letters from both my top schools, so I'm sitting on the fence about which one I should attend.", "translation": "我從我兩間最想讀的學校都有獲得錄取函，因此猶豫不定，不知該選擇哪間學校。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "ferry",
+      "phonetic": "ˈfɛrɪ",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "渡輪", "sentence": "They waited for the ferry to return so they could cross the river.", "translation": "他們等候渡船返回，以便渡過這條河。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "fireplace",
+      "phonetic": "ˈfaɪrˏples",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "壁爐", "sentence": "Greg knew that someone had been in the house because the coals in the fireplace were still glowing.", "translation": "葛瑞格知道剛才有人在屋子裡，因為壁爐裡的煤塊還是熱的。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "flavor",
+      "phonetic": "ˈflevə",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "味道；口味 (= taste)", "sentence": "Which flavor of ice cream do you want: chocolate or vanilla?", "translation": "你想吃哪種口味的冰淇淋，巧克力或是香草？" },
+        { "pos": "vt.", "chinese": "給…調味", "sentence": "Kate flavored the fish with sugar and vinegar.", "translation": "凱特用糖和醋給魚調味。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "flour",
+      "phonetic": "flaʊr",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "麵粉", "sentence": "Leo prefers healthy types of bread that are made with whole-wheat flour and other grains as their main ingredient.", "translation": "里歐較喜愛由全麥麵粉和其他穀物為主要材料所製成的健康麵包。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "freezer",
+      "phonetic": "ˈfrizə",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "冷凍櫃", "sentence": "Grace has a large turkey in the freezer, which she plans to cook for Thanksgiving dinner next month.", "translation": "葛蕾斯的冷凍櫃裡有隻很大的火雞，這是她計劃下個月感恩節晚餐要煮的。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "furnish",
+      "phonetic": "ˈfɝnɪʃ",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "vt.", "chinese": "布置", "sentence": "Martin's new house is furnished in the Victorian style.", "translation": "馬丁的新家布置成維多利亞風格。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "gear",
+      "phonetic": "gɪr",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "裝備 (= equipment)", "sentence": "Norman wants to go fishing but doesn't have any gear besides fishing boots.", "translation": "諾曼想去釣魚，但除了釣魚用的橡膠鞋外沒有其他裝備。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "gown",
+      "phonetic": "gaʊn",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "（女用）禮服", "sentence": "My sister wore a white gown to the formal party.", "translation": "我姊姊穿了一件白色禮服去參加那場正式的宴會。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "grocery",
+      "phonetic": "ˈgrosərɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. 1. [C]", "chinese": "食品雜貨（用複數形）", "sentence": "Danny went shopping for his weekly groceries but forgot to buy milk and bread.", "translation": "丹尼去買他每週要買的食品雜貨，但忘了買牛奶和麵包。" },
+        { "pos": "n. 2. [C]", "chinese": "食品雜貨店 (= grocery store)", "sentence": "Danny stopped at the grocery on his way home and got some milk and bread.", "translation": "丹尼在回家途中，順便到雜貨店買些牛奶和麵包。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "heater",
+      "phonetic": "ˈhitə",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "暖氣機；暖爐 (↔ cooler)", "sentence": "It will feel much warmer inside the car if you turn on the heater.", "translation": "如果你打開暖氣的話，車內會更暖和。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "helicopter",
+      "phonetic": "ˈhɛləˏkaptə",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "直升機", "sentence": "Some skiers use helicopters to get to remote mountain slopes.", "translation": "有些滑雪客會搭直升機至偏遠的山坡滑雪。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "household",
+      "phonetic": "ˈhausˏhold",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "一家人；家屬 (= family)", "sentence": "The charitable organization is collecting money for low-income households.", "translation": "那個慈善團體正在為低收入戶募款。" },
+        { "pos": "adj.", "chinese": "家庭的", "sentence": "Household expenses, such as water and electricity, tend to be higher in summer.", "translation": "夏天時，像水費及電費等家庭開支會較高。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "household 的常見搭配字詞如下：",
+        "items": [
+          { "word": "household chores/appliances/expenses", "pos": "", "chinese": "家務/家電/家庭支出" },
+          { "word": "low-income/one-parent household", "pos": "", "chinese": "低收入戶/單親家庭" },
+          { "word": "a household name/word", "pos": "", "chinese": "家喻戶曉的名字" },
+          { "word": "the head of the household", "pos": "", "chinese": "一家之主" }
+        ]
+      }
+    },
+    {
+      "word": "housework",
+      "phonetic": "ˈhausˏwɝk",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "家務；家事", "sentence": "Lydia's husband told her that he would share the housework.", "translation": "莉迪亞的先生說他會分擔家務。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "hut",
+      "phonetic": "hʌt",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "簡陋小屋；茅舍 (= cabin)", "sentence": "The poor old man lived in a little wooden hut.", "translation": "那位可憐的老人住在一間簡陋的小木屋裡。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "immigrate",
+      "phonetic": "ˈɪməˏgret",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "vi.", "chinese": "移居入境 (= settle; ↔ emigrate)", "sentence": "During the past ten years, many foreigners have immigrated to my country.", "translation": "過去十年來，有許多外國人移民到我國。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "immigration",
+      "phonetic": "ˏɪməˈgreʃən",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "移居 (↔ emigration)", "sentence": "After 911, the US government started to control immigration carefully.", "translation": "在911恐怖攻擊事件之後，美國政府開始小心管控移民移入。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "jeep",
+      "phonetic": "dʒip",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "吉普車", "sentence": "The man jumped into his jeep and quickly drove up the hill.", "translation": "那位男人跳進他的吉普車，迅速駛上山坡。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "jelly",
+      "phonetic": "ˈdʒɛlɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "果凍", "sentence": "I would like to have some almond jelly for dessert.", "translation": "我想吃杏仁凍當飯後甜點。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "jet",
+      "phonetic": "dʒɛt",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "噴射（機）", "sentence": "We traveled to Paris by jet on my wife's birthday.", "translation": "我跟我太太在她生日那天一起搭噴射機到巴黎渡假。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "journey",
+      "phonetic": "ˈdʒɝnɪ",
+      "level": "L3",
+      "examYears": ["103", "104", "105"],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "旅行；行程 (= trip)", "sentence": "Phil went on a journey around Italy for ten days last year.", "translation": "菲爾去年到義大利旅行十天。" }
+      ],
+      "phrases": [
+        { "phrase": "make a journey", "chinese": "旅行", "sentence": "The couple made a journey across the Sahara on camels.", "translation": "那對夫妻騎駱駝橫越撒哈拉沙漠旅行。" }
+      ],
+      "wordPlus": {
+        "note": "以下名詞皆有「旅行；旅程」之意，惟語意用法略有不同：",
+        "items": [
+          { "word": "journey", "pos": "", "chinese": "通常指搭乘陸上交通工具的長途旅行" },
+          { "word": "voyage", "pos": "", "chinese": "通常表示乘船或到外太空的長途旅行", "sentence": "The ship set sail from Plymouth, England on a voyage to China." },
+          { "word": "travel", "pos": "", "chinese": "表示從某地到另一地的動作", "sentence": "Air travel is my favorite way to move between countries because it's quick and easy." },
+          { "word": "trip", "pos": "", "chinese": "通常表示兩地間的短程旅行，或是停留時間較短的旅行", "sentence": "Simon is planning a trip to Vietnam next month for his vacation." },
+          { "word": "flight", "pos": "", "chinese": "表示搭乘飛機的旅行", "sentence": "All flights to Chicago today are canceled due to severe thunderstorms." },
+          { "word": "tour", "pos": "", "chinese": "通常表示參觀、遊覽，也可指巡迴表演", "sentence": "We joined a sightseeing tour of the city when we went to Vancouver." },
+          { "word": "cruise", "pos": "", "chinese": "通常表示乘船遊歷", "sentence": "Rita and Joe went on a cruise on the Mekong River during their honeymoon." },
+          { "word": "expedition", "pos": "", "chinese": "尤指探險或遠征", "sentence": "Alice led an expedition into a Malaysian rainforest for her scientific study." }
+        ]
+      }
+    },
+    {
+      "word": "juicy",
+      "phonetic": "ˈdʒusɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "adj.", "chinese": "多汁的", "sentence": "The steak was cooked to perfection as the meat was tender and juicy.", "translation": "這牛排烹調得很完美，肉又嫩又多汁。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "knit",
+      "phonetic": "nɪt",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "vt.", "chinese": "編織（knit-knitted-knitted-knitting）", "sentence": "Joan is knitting a sweater for her son.", "translation": "瓊安正在為她兒子編織毛衣。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "laundry",
+      "phonetic": "ˈlɔndrɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. 1. [C]", "chinese": "洗衣店", "sentence": "Sarah is so busy these days that she sends her dirty clothes to the laundry.", "translation": "莎拉最近很忙，忙到得把髒衣服送洗。" },
+        { "pos": "n. 2. [U]", "chinese": "待洗、已洗或送洗的衣物", "sentence": "Eric does his laundry on Sundays as this is his only free day.", "translation": "週日是艾瑞克唯一有空的日子，所以他都在這天洗衣服。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "leather",
+      "phonetic": "ˈlɛðɚ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "皮革", "sentence": "Leather products are made from the skins of animals.", "translation": "真皮商品由動物的皮製成。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "與「皮革」相關的常見名詞區分如下：",
+        "items": [
+          { "word": "leather", "pos": "", "chinese": "皮革，指加工過的皮革製品" },
+          { "word": "fur", "pos": "", "chinese": "毛皮，指動物身上的毛皮", "sentence": "Some animals are hunted for their fur." },
+          { "word": "hair", "pos": "", "chinese": "毛髮，指動物或人身上的毛髮", "sentence": "Sue has short curly hair." }
+        ]
+      }
+    },
+    {
+      "word": "lemonade",
+      "phonetic": "ˏlɛməˈned",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "檸檬水", "sentence": "Lemonade provides rich amounts of vitamin C and helps to improve skin quality.", "translation": "檸檬水提供豐富的維他命C，有助於改善膚質。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "lettuce",
+      "phonetic": "ˈlɛtɪs",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "萵苣；生菜", "sentence": "Caesar salad is a popular kind of salad that mixes lettuce with lemon juice dressing.", "translation": "凱撒沙拉是一種很受歡迎的沙拉，它把生菜和檸檬汁調醬混和在一起。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "lick",
+      "phonetic": "lɪk",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "vt.", "chinese": "舔", "sentence": "Dogs show love toward their owners by licking their hands.", "translation": "狗舔主人的手以表示對主人的愛。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "linen",
+      "phonetic": "ˈlɪnən",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "亞麻；亞麻布", "sentence": "Clothes made of linen are very suitable for wearing on hot summer days.", "translation": "亞麻布製成的衣服很適合在炎熱的夏天穿。" }
+      ],
+      "phrases": [
+        { "phrase": "wash one's dirty linen (in public)", "chinese": "使家醜外揚", "sentence": "Jane broke up with Allen after she discovered he was always washing their dirty linen in public.", "translation": "珍跟艾倫分手了，因為她發現艾倫總是在外宣揚他們之間不可告人的事。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "liquor",
+      "phonetic": "ˈlɪkɚ",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "烈酒", "sentence": "Drinking a lot of hard liquor can damage our health.", "translation": "喝太多烈酒會危害健康。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "loaf",
+      "phonetic": "lof",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "一條（麵包）（複數形loaves）", "sentence": "In the bakery, many loaves of bread are being baked in the oven.", "translation": "在麵包店，許多麵包正在烤箱中烘烤。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "lollipop",
+      "phonetic": "ˈlaliˏpap",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "棒棒糖", "sentence": "My mother doesn't want me to have lollipops or any other candy because they will damage my teeth.", "translation": "我媽不要我吃棒棒糖或其他糖果，因為這些東西會損壞我的牙齒。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "march",
+      "phonetic": "martʃ",
+      "level": "L3",
+      "examYears": ["103"],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "示威遊行；行軍 (= parade)", "sentence": "Supporters of the president will hold a march in Taipei next week.", "translation": "總統的支持者下週將在臺北舉行遊行。" },
+        { "pos": "vi.", "chinese": "示威遊行；行進", "sentence": "They marched into the office and demanded to see the manager.", "translation": "他們大步走進辦公室，要求見經理。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "melon",
+      "phonetic": "ˈmɛlən",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "甜瓜；瓜", "sentence": "I made a fruit salad with strawberries, mangoes, grapes, and two kinds of melon.", "translation": "我用草莓、芒果、葡萄和兩種甜瓜做了水果沙拉。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "microwave",
+      "phonetic": "ˈmaɪkroˏwev",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "微波爐；微波", "sentence": "Terry took his lunch out of the fridge and heated it up in the microwave.", "translation": "泰瑞從冰箱裡拿出午餐，放進微波爐加熱。" },
+        { "pos": "vt.", "chinese": "微波", "sentence": "Esther microwaved the cold pizza for one minute so that she could eat it hot.", "translation": "艾絲特把冷掉的披薩微波了一分鐘，這樣她才能吃到熱披薩。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "mushroom",
+      "phonetic": "ˈmʌʃrum",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "洋菇；蕈", "sentence": "Not all mushrooms are edible, so never pick and eat them in the forest.", "translation": "並非所有的蕈類皆可食用，所以不要在森林裡採食它們。" },
+        { "pos": "vi.", "chinese": "急速增加 (= spring up)", "sentence": "The city is quickly developing with new buildings mushrooming everywhere.", "translation": "隨著新的建築物如雨後春筍般出現在各處，這城市正迅速發展中。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "nap",
+      "phonetic": "næp",
+      "level": "L3",
+      "examYears": ["108"],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "小睡 (= doze)", "sentence": "In Taiwan, young students are required to take a nap after lunch.", "translation": "在臺灣，中小學生依規定要午餐後要午休。" },
+        { "pos": "vi.", "chinese": "小睡；打盹 (= doze)（nap-napped-napped-napping）", "sentence": "Tom stayed up dancing late last night, so he was very tired and napped at work this morning.", "translation": "湯姆昨晚熬夜跳舞，所以今天早上他很累，上班時還打盹。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "necktie",
+      "phonetic": "ˈnɛkˏtaɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "領帶", "sentence": "Hank wore a blue necktie to go with his suit.", "translation": "漢克打了一條藍色領帶搭配他的西裝。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    }
+  ]
+}

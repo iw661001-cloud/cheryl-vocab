@@ -1,0 +1,455 @@
+{
+  "id": "ch01-1",
+  "name": "Ch01 日常生活 單元1-1",
+  "words": [
+    {
+      "word": "aboard",
+      "phonetic": "əˈbɔrd",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "adv.", "chinese": "登上（交通工具）", "sentence": "Adam waved goodbye to his family and went aboard.", "translation": "亞當和家人揮手道別，上了船（飛機、車等）。" },
+        { "pos": "prep.", "chinese": "登上（交通工具）", "sentence": "When all the passengers are aboard the bus, it will leave.", "translation": "當所有乘客都上了巴士，它就會開走。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "以下單字字形相似，字義卻不同：",
+        "items": [
+          { "word": "aboard", "pos": "adv. prep.", "chinese": "登上（交通工具）" },
+          { "word": "abroad", "pos": "adv.", "chinese": "在國外；到國外", "sentence": "I plan to study abroad in Germany next year." },
+          { "word": "board", "pos": "v.", "chinese": "登上船（飛機、火車等）", "sentence": "We can board the train at 3 p.m." },
+          { "word": "broad", "pos": "adj.", "chinese": "寬的；闊的", "sentence": "The strong man has broad shoulders." }
+        ]
+      }
+    },
+    {
+      "word": "airline",
+      "phonetic": "ˈɛrˏlaɪn",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "航空公司", "sentence": "Signing up for our airline's membership program allows you to save up mileage and get discounts for your future trips.", "translation": "申請我們航空公司的會員可以讓你累積里程數，並在未來的旅程換取折扣。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "alcohol",
+      "phonetic": "ˈælkəˏhɔl",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "酒精", "sentence": "Alcohol can be used to kill bacteria.", "translation": "酒精可以用來殺菌。" },
+        { "pos": "n. [U]", "chinese": "含酒精之飲料", "sentence": "Beer and wine are different kinds of alcohol.", "translation": "啤酒和葡萄酒是不同的酒類。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "allowance",
+      "phonetic": "əˈlaʊəns",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "零用錢 (= pocket money)", "sentence": "I get a weekly allowance of NT$500 from my parents.", "translation": "我父母每星期給我五百元臺幣的零用錢。" },
+        { "pos": "n. [C]", "chinese": "津貼", "sentence": "Business people often get a travel allowance from their company to pay for their hotel and meals.", "translation": "業務員出差時，他們的公司通常會給他們食宿的差旅費。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "almond",
+      "phonetic": "ˈɑmənd",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "杏仁；扁桃樹", "sentence": "My sister loves to put nuts, like almonds, on top of her ice cream.", "translation": "我姐姐喜歡在冰淇淋上加杏仁之類的堅果。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "ambulance",
+      "phonetic": "ˈæmbjələns",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "救護車", "sentence": "The law requires all cars to give way to any ambulance with its sirens on.", "translation": "法律規定所有車輛都須讓路給任何執行勤務中的救護車。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "automobile/auto",
+      "phonetic": "ˈɔtəˏmobil / ˈɔto",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "車子 (= car)", "sentence": "Joe doesn't have enough money to buy an automobile, so he takes the bus to work.", "translation": "喬沒有足夠的錢買車子，所以只好搭公車上班。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "bacon",
+      "phonetic": "ˈbekən",
+      "level": "L5",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [U]", "chinese": "培根", "sentence": "I like to eat bacon and eggs for breakfast.", "translation": "我早餐喜歡吃培根蛋。" }
+      ],
+      "phrases": [
+        { "phrase": "bring home the bacon", "chinese": "維持家計", "sentence": "When Tom hurt his back, Mary had to go to work to bring home the bacon.", "translation": "湯姆背部受傷時，瑪麗得去工作以維持家計。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "bargain",
+      "phonetic": "ˈbɑrgən",
+      "level": "L4",
+      "examYears": ["93", "107"],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "交易；協議 (= agreement)", "sentence": "Joan made a bargain with the carpenter—if he finished building the cabinets quickly, she'd give him more money.", "translation": "瓊安和木匠達成協議：如果他快點做完櫥櫃，她會多付他一些錢。" },
+        { "pos": "n. [C]", "chinese": "划算的交易；便宜貨 (= good deal)", "sentence": "Buying the house at such a low price was a real bargain.", "translation": "用這麼低的價錢買到那間房子真是划算。" },
+        { "pos": "vi.", "chinese": "講價；談條件 (= negotiate)", "sentence": "We bargained with the fruit seller until he lowered his prices.", "translation": "我們跟水果商討價還價直到他算我們便宜點。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "下列名詞皆有「協議；約定」之意，惟語意用法略有不同：",
+        "items": [
+          { "word": "bargain", "pos": "", "chinese": "常指買賣雙方的協議" },
+          { "word": "contract", "pos": "", "chinese": "指有法律效力的正式契約、合同", "sentence": "You need to sign this contract before the bank gives you the loan." },
+          { "word": "agreement", "pos": "", "chinese": "國家、公司等之間的書面或口頭協議、協定", "sentence": "The two companies reached an agreement on how to work together." },
+          { "word": "treaty", "pos": "", "chinese": "國與國最正式的條約", "sentence": "The presidents signed a peace treaty that ended the war." },
+          { "word": "convention", "pos": "", "chinese": "常指國際間的公約", "sentence": "Under the Geneva Convention, countries agree not to mistreat prisoners of war." }
+        ]
+      }
+    },
+    {
+      "word": "bitter",
+      "phonetic": "ˈbɪtɚ",
+      "level": "L3",
+      "examYears": ["94", "98"],
+      "entries": [
+        { "pos": "adj.", "chinese": "苦的", "sentence": "This coffee is terribly bitter and needs some sugar to make it easy to drink.", "translation": "這杯咖啡實在太苦了，需要加入一些糖來使得它容易入口。" },
+        { "pos": "adj.", "chinese": "天氣嚴寒的", "sentence": "I opened the door and was immediately struck by the bitter cold outside.", "translation": "我打開門，立刻被外面的酷寒嚇了一跳。" },
+        { "pos": "adj.", "chinese": "怨恨的；充滿仇恨的；無法釋懷的", "sentence": "The bitter old man spent all of his time thinking about all the things that made him mad.", "translation": "那位滿懷仇恨的老人花全部的時間想著所有讓他憤怒的事物。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "blouse",
+      "phonetic": "blaus",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "（女裝的）上衣", "sentence": "Mary had trouble deciding which blouse went best with her new skirt.", "translation": "瑪麗很難決定哪件上衣最搭她的新裙子。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "bookcase",
+      "phonetic": "ˈbukˏkes",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "書架", "sentence": "Dr. Hill's bookcase is filled with medical books and patient records.", "translation": "希爾博士的書架上放滿了醫學書籍和患者的病歷。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "brake",
+      "phonetic": "brek",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "剎車（常用複數形）", "sentence": "The man had to hit the brakes hard when a dog ran out in front of his car.", "translation": "一隻狗衝到那名男子的車前時，他只好緊急剎車。" },
+        { "pos": "vt. vi.", "chinese": "剎車", "sentence": "I fell on another passenger when the bus driver braked suddenly.", "translation": "公車司機突然剎車時，我跌倒在一名乘客身上。" }
+      ],
+      "phrases": [
+        { "phrase": "put a brake on sth.", "chinese": "使某事停頓", "sentence": "The company put a brake on its project once the market weakened.", "translation": "當市場疲弱不振，那家公司便暫停那項企畫案。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "brunch",
+      "phonetic": "brʌntʃ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "早午餐", "sentence": "Pamela won't have breakfast because she'll meet her friends for brunch at 11 a.m.", "translation": "潘美拉沒有要吃早餐，因為她會在11點和朋友碰面吃早午餐。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "buffet",
+      "phonetic": "bəˈfe",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "自助餐", "sentence": "If you want to try a lot of different foods, you can go to a buffet in a good hotel restaurant.", "translation": "如果你想品嚐許多不同的菜色，可以去高級飯店的餐廳吃自助餐。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "與「自助餐」相關的常見名詞區分如下：",
+        "items": [
+          { "word": "buffet", "pos": "", "chinese": "指吃到飽的自助式餐飲" },
+          { "word": "cafeteria", "pos": "", "chinese": "指大學或辦公大樓內的自助餐" }
+        ]
+      }
+    },
+    {
+      "word": "cabin",
+      "phonetic": "ˈkæbɪn",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. 1. [C]", "chinese": "小木屋", "sentence": "Bill used to spend his holidays in a lovely cabin by a lake in northern Canada.", "translation": "比爾以前常在加拿大北方一座湖邊的美麗小木屋度假。" },
+        { "pos": "n. 2. [C]", "chinese": "船艙；機艙", "sentence": "Airline passengers aren't usually allowed to go into the pilot's cabin.", "translation": "飛機乘客通常不准進入駕駛艙內。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "cabinet",
+      "phonetic": "ˈkæbənət",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. 1. [C]", "chinese": "櫥櫃；展示櫃 (= cupboard)", "sentence": "Lily took some aspirin from her medicine cabinet to treat her headache.", "translation": "莉莉從藥櫃中拿了一些阿斯匹靈治頭痛。" },
+        { "pos": "n. 2. [C]", "chinese": "政府內閣；內閣人員", "sentence": "The prime minister will choose his new cabinet very soon.", "translation": "行政院長很快將選出新內閣成員。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "carriage",
+      "phonetic": "ˈkærɪdʒ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "馬車", "sentence": "People in the 19th century got around by horse-drawn carriage.", "translation": "十九世紀的人以馬車代步。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "chew",
+      "phonetic": "tʃu",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "vt. vi.", "chinese": "咀嚼", "sentence": "You should chew food well before swallowing it.", "translation": "食物在吞下前要細嚼。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "chimney",
+      "phonetic": "ˈtʃɪmnɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "煙囪", "sentence": "It is said that Santa Claus climbs down chimneys to deliver gifts on Christmas Eve.", "translation": "據說耶誕老人會在耶誕夜爬下煙囪送禮物。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "closet",
+      "phonetic": "ˈklazɪt",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "衣櫥；儲藏室", "sentence": "Tina often goes through her closet and picks out old clothes that she wants to give away to make room for new ones.", "translation": "為了騰出空間放新衣服，提娜經常翻查衣櫥，並選出她想要送人的舊衣服。" }
+      ],
+      "phrases": [
+        { "phrase": "skeleton in the/one's closet", "chinese": "不能見光的秘密；家醜", "sentence": "Almost every politician has a few skeletons in their closet, and the media often goes to great lengths to reveal these scandalous secrets.", "translation": "幾乎每位政治人物都有不能說的秘密，而媒體時常竭盡全力揭發這些醜聞秘密。" },
+        { "phrase": "come out of the closet", "chinese": "（同性戀）出櫃", "sentence": "Brad finally plucked up the courage and came out of the closet to his parents.", "translation": "布萊德最後終於鼓起勇氣向他父母出櫃。" }
+      ],
+      "wordPlus": null
+    },
+    {
+      "word": "cocktail",
+      "phonetic": "ˈkakˏtel",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "雞尾酒", "sentence": "Most cocktails are just a mix of different alcohols and are not hard to make.", "translation": "大部分的雞尾酒只是混合不同的酒類而已，而且並不會很難調。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "coconut",
+      "phonetic": "ˈkokəˏnət",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "椰子", "sentence": "Bruce was almost killed when a coconut hit him on the head on a beach in Thailand.", "translation": "布魯斯在泰國的一處海灘時被掉下來的椰子擊中頭部，差點斃命。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "collar",
+      "phonetic": "ˈkalə",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "衣領", "sentence": "The collar of my shirt was too tight, so I found it hard to breathe.", "translation": "我襯衫的衣領太緊了，所以我覺得呼吸困難。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "costume",
+      "phonetic": "ˈkasˏtjum",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "服裝", "sentence": "The actors were all dressed in 16th-century costumes throughout the movie.", "translation": "那部電影裡的演員從頭到尾都穿著十六世紀的服裝。" }
+      ],
+      "phrases": [],
+      "wordPlus": {
+        "note": "與「衣服」相關的常見名詞區分如下：",
+        "items": [
+          { "word": "costume", "pos": "", "chinese": "（某時期或某活動的）服裝" },
+          { "word": "garment", "pos": "", "chinese": "服裝；衣著（比較正式、莊重的用語）", "sentence": "All of the garments at this clothing store are made by fair-trade companies." },
+          { "word": "outfit", "pos": "", "chinese": "（特殊場合穿的）整套服裝", "sentence": "Dora packed a few outfits and a bathing suit for her weekend trip." },
+          { "word": "clothing", "pos": "", "chinese": "衣服（不可數）", "sentence": "The clothing store held a big summer sale, offering up to 50% off on select styles." },
+          { "word": "wardrobe", "pos": "", "chinese": "（個人的）全部服裝", "sentence": "Despite Amy's large wardrobe, she complained she had nothing to wear to the party." },
+          { "word": "attire", "pos": "", "chinese": "（常指特定樣式或正式的）服裝（不可數）", "sentence": "Isaac dressed in formal attire for the fancy black-tie event." },
+          { "word": "apparel", "pos": "", "chinese": "（常指特定種類的）服裝（常見於美式用法）", "sentence": "Before practicing for a marathon, you need to buy the proper sports apparel." }
+        ]
+      }
+    },
+    {
+      "word": "cottage",
+      "phonetic": "ˈkatɪdʒ",
+      "level": "L4",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "（鄉間）小屋", "sentence": "We dream of buying a little cottage in the countryside to retire in.", "translation": "我們夢想在鄉間買一棟退休時住的小屋。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "crane",
+      "phonetic": "kren",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. 1. [C]", "chinese": "起重機；吊車", "sentence": "The construction workers often use a crane to lift and move heavy things while putting up or tearing down a building.", "translation": "蓋房子或是拆除建築物的時候，這群建築工人常使用吊手來舉起或移動重物。" },
+        { "pos": "n. 2. [C]", "chinese": "鶴", "sentence": "A rare crane flew into Taiwan in 2016 and gained local fame, attracting hundreds of bird-watchers daily until the day it flew back home.", "translation": "一隻稀有的鶴在2016年飛到臺灣，並受到當地人歡迎，每天吸引上百位賞鳥客，直到牠飛回家。" },
+        { "pos": "vt. vi.", "chinese": "伸長（脖子）；探著身子（看）", "sentence": "The small girl craned her neck to see the band onstage, but she could not see over the tall people.", "translation": "那位身材矮小的女孩伸長了她的脖子看舞臺上的樂團，但一群高個兒仍擋住她的視線。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "crispy",
+      "phonetic": "ˈkrɪspɪ",
+      "level": "L3",
+      "examYears": ["109", "110"],
+      "entries": [
+        { "pos": "adj.", "chinese": "脆的", "sentence": "I like crispy toast, instead of soft bread, for my breakfast.", "translation": "我喜歡吃酥脆的烤吐司當早餐，不喜歡軟軟的麵包。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "cupboard",
+      "phonetic": "ˈkʌbəd",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "櫥櫃；壁櫥", "sentence": "Most kitchen cupboards contain at least some sugar, rice, flour, salt, and pepper.", "translation": "大部分的廚房櫥櫃裡至少都會有一些糖、米、麵粉、鹽和胡椒。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "dairy",
+      "phonetic": "ˈdɛrɪ",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "乳品廠", "sentence": "The farm has a small dairy where it makes cheese.", "translation": "那座農場有一間製作乳酪的小型乳品廠。" },
+        { "pos": "adj.", "chinese": "牛乳的", "sentence": "I can't eat dairy products such as yogurt and cheese.", "translation": "我不能吃像優格或起司之類的乳製品。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "depart",
+      "phonetic": "dɪˈpart",
+      "level": "L4",
+      "examYears": ["95", "103", "110"],
+      "entries": [
+        { "pos": "vi.", "chinese": "離開 (= leave; ↔ arrive)", "sentence": "The train departs from platform one at noon.", "translation": "火車在中午時從一號月臺開出。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "departure",
+      "phonetic": "dɪˈpartʃə",
+      "level": "L4",
+      "examYears": ["104"],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "離開 (↔ arrival)", "sentence": "What is the departure time for the flight to Kaohsiung?", "translation": "飛往高雄的班機什麼時候起飛？" }
+      ],
+      "phrases": [
+        { "phrase": "make one's departure", "chinese": "離去；告辭", "sentence": "Seeing that there was no longer any need for his services, Fred decided to make his departure early.", "translation": "既然不再需要他的服務，弗瑞德決定提早離開。" }
+      ],
+      "wordPlus": {
+        "note": "字尾 -ure 為名詞字尾，接在動詞之後，表示「行為；結果；集合體」之意，如：",
+        "items": [
+          { "word": "departure", "pos": "", "chinese": "離開；啟程（depart 離開）" },
+          { "word": "exposure", "pos": "", "chinese": "接觸；宣傳；曝光（expose 揭露）", "sentence": "Henry's first exposure to rock music was as a young child when his dad would play it." },
+          { "word": "mixture", "pos": "", "chinese": "混合物（mix 混合）", "sentence": "Taiwan's population is a mixture of indigenous tribes and people whose ancestors came from China." },
+          { "word": "legislature", "pos": "", "chinese": "立法機關（legislate 立法）", "sentence": "The legislature is currently debating whether drones should be further regulated." }
+        ]
+      }
+    },
+    {
+      "word": "dessert",
+      "phonetic": "dɪˈzɝt",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "n. [C] [U]", "chinese": "甜點", "sentence": "Cindy and James went to a fancy restaurant last week that included a three-course meal and ended with an elegant dessert created by the chef.", "translation": "辛蒂和詹姆士上週去了一間高級餐廳，共有三道菜，最後是主廚自創的雅緻甜點。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "dine",
+      "phonetic": "daɪn",
+      "level": "L3",
+      "examYears": [],
+      "entries": [
+        { "pos": "vi.", "chinese": "吃正餐；吃晚飯", "sentence": "I don't feel like cooking; let's dine out tonight.", "translation": "我不想下廚，今晚我們出去吃吧！" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    },
+    {
+      "word": "dock",
+      "phonetic": "dak",
+      "level": "L3",
+      "examYears": ["113"],
+      "entries": [
+        { "pos": "n. [C]", "chinese": "碼頭；修船場", "sentence": "As a child, Nora liked to sit on the docks and watch the boats.", "translation": "諾拉小時候喜歡坐在碼頭上看來往的船隻。" }
+      ],
+      "phrases": [],
+      "wordPlus": null
+    }
+  ]
+}
