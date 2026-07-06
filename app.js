@@ -42,7 +42,58 @@ let wrongReviewWords = [];
 let wrongReviewIndex = 0;
 let wrongReviewFlipped = false;
 
+// ---- 使用者姓名（同步練習成果到雲端用，讓家長儀表板能區分是誰練習的） ----
+const NAME_KEY = "cheryl-vocab-name";
+let currentName = localStorage.getItem(NAME_KEY) || null;
+
+function sanitizeId(text) {
+  return text.replace(/[\/#?]/g, "-"); // Firestore 文件 id 不能有斜線等符號（如 "automobile/auto"）
+}
+
+function initNameUI() {
+  const nameModal = document.getElementById("nameModal");
+  const nameInput = document.getElementById("nameInput");
+
+  document.getElementById("switchNameBtn").addEventListener("click", () => {
+    nameInput.value = currentName || "";
+    nameModal.style.display = "flex";
+  });
+  document.getElementById("nameConfirmBtn").addEventListener("click", () => {
+    const name = nameInput.value.trim();
+    if (!name) return;
+    currentName = name;
+    localStorage.setItem(NAME_KEY, name);
+    db.collection("students").doc(sanitizeId(name)).set({
+      name,
+      lastActiveAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }, { merge: true });
+    nameModal.style.display = "none";
+    updateNameDisplay();
+  });
+
+  db.collection("students").get().then((snap) => {
+    const datalist = document.getElementById("nameOptions");
+    snap.forEach((doc) => {
+      const opt = document.createElement("option");
+      opt.value = doc.data().name || doc.id;
+      datalist.appendChild(opt);
+    });
+  });
+
+  if (!currentName) {
+    nameModal.style.display = "flex";
+  } else {
+    updateNameDisplay();
+  }
+}
+
+function updateNameDisplay() {
+  document.getElementById("nameDisplay").textContent = currentName ? `使用者：${currentName}` : "";
+}
+
 function init() {
+  initNameUI();
+
   Promise.all(UNITS.map((u) => fetch(u.file).then((res) => res.json())))
     .then((allUnitData) => {
       allWords = [];
@@ -401,9 +452,40 @@ function selectAnswer(btn) {
   }, 1200);
 }
 
+// 練習場次結束時，把這場的成績與熟悉度同步到雲端，讓家長儀表板看得到
+function syncSessionToCloud() {
+  if (!currentName) return;
+  const today = new Date().toISOString().slice(0, 10);
+  const studentRef = db.collection("students").doc(sanitizeId(currentName));
+
+  studentRef.set({
+    name: currentName,
+    lastActiveAt: firebase.firestore.FieldValue.serverTimestamp(),
+  }, { merge: true });
+
+  studentRef.collection("sessions").add({
+    date: today,
+    batchId: currentChapterId,
+    correctCount,
+    wrongCount,
+    completedAt: firebase.firestore.FieldValue.serverTimestamp(),
+  });
+
+  currentWords.forEach((w) => {
+    studentRef.collection("mastery").doc(sanitizeId(`${w._unitId}__${w.word}`)).set({
+      word: w.word,
+      unitId: w._unitId,
+      state: getWordState(w.word),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }, { merge: true });
+  });
+}
+
 function renderQuizResult() {
   const counts = { weak: 0, medium: 0, familiar: 0, unseen: 0 };
   currentWords.forEach((w) => counts[getWordState(w.word)]++);
+
+  syncSessionToCloud();
 
   appEl.innerHTML = `
     <div class="quiz-result">

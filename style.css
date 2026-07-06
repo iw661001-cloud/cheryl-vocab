@@ -44,6 +44,64 @@ header h1 {
   text-align: center;
 }
 
+.name-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.link-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #fff;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.name-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.name-modal-box {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+.name-modal-box h2 {
+  margin-top: 0;
+}
+
+.name-modal-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.name-modal-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #dde2f0;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
 .controls {
   display: flex;
   flex-direction: column;
@@ -281,6 +339,32 @@ main {
   text-align: center;
   color: var(--muted);
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.student-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.student-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.student-stats {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.student-card .mastery-summary {
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 .feedback-banner {
