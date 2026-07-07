@@ -1,10 +1,19 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // 只公開開放 students 這棵樹（姓名、練習紀錄、熟悉度），其他路徑一律拒絕。
-    // 這是家庭背單字用途，沒有帳號登入機制，資料本身也不涉及個資或金錢，
+    // 這個 Firebase 專案同時給 cheryl-vocab（students）與 feige-vocab（feige_students）
+    // 兩個網站共用，只公開開放這兩棵樹，其他路徑一律拒絕。
+    // 家庭背單字用途，沒有帳號登入機制，資料本身也不涉及個資或金錢，
     // 用公開讀寫換取「不用另外做登入系統」的簡單性。
     match /students/{studentId} {
+      allow read, write: if true;
+
+      match /{subcollection=**} {
+        allow read, write: if true;
+      }
+    }
+
+    match /feige_students/{studentId} {
       allow read, write: if true;
 
       match /{subcollection=**} {
