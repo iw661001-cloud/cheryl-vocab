@@ -5,6 +5,14 @@
 const appEl = document.getElementById("app");
 const BATCH_IDS = ["11501-batch1", "11501-batch2", "11501-batch3", "11501-batch4", "11501-batch5", "11501-batch6", "11501-batch7"];
 
+// Firestore資料理論上只有白名單帳號能寫，但直接塞進innerHTML仍是不良習慣，
+// 萬一內容出現 < & 等字元會跑版，一併跳脫避免。
+function escapeHtml(str) {
+  return String(str == null ? "" : str).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
 let allWords = [];
 let mode = "flashcard";
 let cardOrder = [];
@@ -42,7 +50,11 @@ function loadContent() {
       render();
     })
     .catch((e) => {
-      appEl.innerHTML = `<p style="color:#d9534f; padding:2rem;">讀取失敗：${e.message}</p>`;
+      if (e.code === "permission-denied") {
+        showWrongAccountGate();
+        return;
+      }
+      appEl.innerHTML = `<p style="color:#d9534f; padding:2rem;">讀取失敗：${escapeHtml(e.message)}</p>`;
     });
 }
 
@@ -151,8 +163,8 @@ function renderFlashcard() {
 function renderCardFront(word) {
   return `
     <div class="card-front">
-      <div class="word-main">${word.word}</div>
-      <span class="level-badge">${word.pos || ""}</span>
+      <div class="word-main">${escapeHtml(word.word)}</div>
+      <span class="level-badge">${escapeHtml(word.pos)}</span>
       <div><button class="speak-btn" title="發音">🔊</button></div>
       <div class="hint">點卡片看中文意思</div>
     </div>
@@ -163,9 +175,9 @@ function renderCardBack(word) {
   return `
     <div class="card-back">
       <div class="entry-block">
-        <span class="pos">${word.pos || ""}</span><span class="chinese">${word.chinese || ""}</span>
-        <div class="sentence">${word.sentence || ""}</div>
-        <div class="translation">${word.translation || ""}</div>
+        <span class="pos">${escapeHtml(word.pos)}</span><span class="chinese">${escapeHtml(word.chinese)}</span>
+        <div class="sentence">${escapeHtml(word.sentence)}</div>
+        <div class="translation">${escapeHtml(word.translation)}</div>
       </div>
     </div>
   `;
@@ -255,9 +267,9 @@ function renderQuiz() {
       <span>第 ${sessionPos + 1} / ${SESSION_LENGTH} 題</span>
       <span>對 ${correctCount}・錯 ${wrongCount}</span>
     </div>
-    <div class="quiz-question">${currentQuestion.prompt}</div>
+    <div class="quiz-question">${escapeHtml(currentQuestion.prompt)}</div>
     <div class="quiz-options">
-      ${currentQuestion.options.map((opt) => `<button class="option-btn">${opt}</button>`).join("")}
+      ${currentQuestion.options.map((opt) => `<button class="option-btn">${escapeHtml(opt)}</button>`).join("")}
     </div>
     <div class="feedback-banner" id="feedbackBanner"></div>
   `;
@@ -284,7 +296,7 @@ function selectAnswer(btn) {
   const banner = document.getElementById("feedbackBanner");
   banner.innerHTML = correct
     ? `<div class="celebrate">🎉 ${CELEBRATE_PHRASES[Math.floor(Math.random() * CELEBRATE_PHRASES.length)]} 🎉</div>`
-    : `<div class="gentle">答案是「${currentQuestion.answer}」，下次會記得的！</div>`;
+    : `<div class="gentle">答案是「${escapeHtml(currentQuestion.answer)}」，下次會記得的！</div>`;
   setTimeout(() => {
     sessionPos++;
     quizAnswered = false;

@@ -43,6 +43,7 @@ service cloud.firestore {
     // 只有白名單信箱才能讀到這批資料。目前只有使用者本人一組帳號。
     function isAllowedEmail() {
       return request.auth != null &&
+        request.auth.token.email_verified == true &&
         request.auth.token.email in ['iw661001@gmail.com'];
     }
     match /word_exams/{examId} {
