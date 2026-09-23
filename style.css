@@ -129,6 +129,12 @@ a.link-btn:visited {
   font-size: 1rem;
 }
 
+.word-count-badge {
+  color: rgba(255,255,255,0.9);
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
 .mode-tabs {
   display: flex;
   gap: 8px;
@@ -238,9 +244,9 @@ main {
 .entry-block:last-child { border-bottom: none; }
 
 .pos { color: var(--primary-dark); font-weight: bold; margin-right: 6px; }
-.chinese { font-size: 1.05rem; }
-.sentence { margin-top: 6px; font-style: italic; }
-.translation { color: var(--muted); margin-top: 2px; font-size: 0.95rem; }
+.chinese { font-size: 1.05rem; line-height: 1.7; }
+.sentence { margin-top: 10px; font-style: italic; line-height: 1.7; }
+.translation { color: var(--muted); margin-top: 8px; font-size: 0.95rem; line-height: 1.7; }
 
 .phrase-box, .plus-box {
   margin-top: 10px;

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>11501八信單字書</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>11501八信單字書</h1>
+  <div class="name-bar">
+    <span id="nameDisplay"></span>
+    <a href="index.html" class="link-btn" style="text-decoration:none;">回單字練習</a>
+    <a href="dashboard.html" class="link-btn" style="text-decoration:none;">儀表板</a>
+  </div>
+</header>
+
+<main id="app">
+  <p style="text-align:center; color:#888; padding:2rem;">登入後才會載入內容...</p>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-init.js"></script>
+<script src="auth-gate.js?v=2"></script>
+<script src="word-exam.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>匯入工具（內部用，不對外連結）</title>
+</head>
+<body style="font-family:sans-serif; padding:2rem;">
+<h1>11501八信單字書 - 資料匯入工具</h1>
+<p>這是內部一次性工具，用你自己的Google帳號登入後，把批次資料寫進Firestore。</p>
+<button id="loginBtn">1. 用Google登入</button>
+<div id="status" style="margin-top:1rem; white-space:pre-wrap;"></div>
+
+<input type="file" id="fileInput" accept=".json" style="margin-top:1rem; display:block;">
+<button id="importBtn" style="margin-top:1rem;">2. 選好檔案後，匯入這批資料</button>
+<button id="verifyBtn" style="margin-top:1rem;">3. 向伺服器確認剛才真的寫進去了</button>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-init.js"></script>
+<script>
+const auth = firebase.auth();
+const statusEl = document.getElementById('status');
+
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  try {
+    await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    statusEl.textContent = '登入成功：' + auth.currentUser.email;
+  } catch (e) {
+    statusEl.textContent = '登入失敗：' + e.message;
+  }
+});
+
+let lastImportedId = null;
+
+document.getElementById('importBtn').addEventListener('click', async () => {
+  const file = document.getElementById('fileInput').files[0];
+  if (!file) { statusEl.textContent = '請先選擇檔案'; return; }
+  if (!auth.currentUser) { statusEl.textContent = '請先登入'; return; }
+
+  statusEl.textContent = '寫入中...（尚未確認，請等下面的伺服器確認結果）';
+  const text = await file.text();
+  const data = JSON.parse(text);
+  lastImportedId = data.id;
+  try {
+    await db.collection('word_exams').doc(data.id).set(data);
+    statusEl.textContent = `本機回報已寫入：${data.id}（${data.words.length}個單字）——請點下面「3.向伺服器確認」才算數`;
+  } catch (e) {
+    statusEl.textContent = '匯入失敗：' + e.message;
+  }
+});
+
+document.getElementById('verifyBtn').addEventListener('click', async () => {
+  if (!lastImportedId) { statusEl.textContent = '還沒匯入過，先做步驟2'; return; }
+  statusEl.textContent = '正在向伺服器查詢（強制略過本機快取）...';
+  try {
+    const doc = await db.collection('word_exams').doc(lastImportedId)
+      .get({ source: 'server' });
+    if (doc.exists) {
+      const d = doc.data();
+      statusEl.textContent = `✅ 伺服器確認存在：${lastImportedId}，實際單字數 ${d.words ? d.words.length : '未知'}`;
+    } else {
+      statusEl.textContent = `❌ 伺服器查無此文件：${lastImportedId}，剛才的匯入沒有真的送達`;
+    }
+  } catch (e) {
+    statusEl.textContent = '❌ 確認失敗（可能還是被擋）：' + e.message;
+  }
+});
+</script>
+</body>
+</html>

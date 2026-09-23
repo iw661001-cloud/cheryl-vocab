@@ -20,5 +20,37 @@ service cloud.firestore {
         allow read, write: if true;
       }
     }
+
+    // bw-grammar-daily：使用者自己的每日文法/中翻英練習，單人使用，無姓名選擇機制。
+    match /self_grammar/{trackId} {
+      allow read, write: if true;
+
+      match /{subcollection=**} {
+        allow read, write: if true;
+      }
+    }
+
+    // fire-engineer-exam：消防設備師/士測驗複習網頁，使用者自己的作答進度，單人使用。
+    match /fire_exam/{subjectId} {
+      allow read, write: if true;
+
+      match /{subcollection=**} {
+        allow read, write: if true;
+      }
+    }
+
+    // 11501八信單字書：改用Google登入限制讀取（不像其餘樹狀結構公開），
+    // 只有白名單信箱才能讀到這批資料。目前只有使用者本人一組帳號。
+    function isAllowedEmail() {
+      return request.auth != null &&
+        request.auth.token.email in ['iw661001@gmail.com'];
+    }
+    match /word_exams/{examId} {
+      allow read, write: if isAllowedEmail();
+
+      match /{subcollection=**} {
+        allow read, write: if isAllowedEmail();
+      }
+    }
   }
 }
